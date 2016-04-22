@@ -15,6 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AffiliationChoiceActivity" />
+        <activity android:name=".TeamChoiceActivity" />
+        <activity android:name=".HeroChoiceActivity"></activity>
     </application>
 
 </manifest>
