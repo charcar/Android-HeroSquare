@@ -20,8 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log In"
-        android:id="@+id/button"
-        android:layout_above="@+id/button2"
+        android:id="@+id/logInButton"
+        android:layout_above="@+id/browseHeroesButton"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="64dp" />
 
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Browse Heroes"
-        android:id="@+id/button2"
+        android:id="@+id/browseHeroesButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
