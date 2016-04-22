@@ -47,11 +47,21 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="need to start a new adventure?"
-        android:id="@+id/textView3"
+        android:id="@+id/newAdventureTextView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp"
         android:textColor="#4a026f"
         android:textStyle="bold"
         android:textSize="25sp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let&apos;s Go!"
+        android:id="@+id/userAuthButton"
+        android:layout_below="@+id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp" />
 </RelativeLayout>
