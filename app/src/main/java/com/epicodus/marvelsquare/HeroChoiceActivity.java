@@ -28,15 +28,12 @@ public class HeroChoiceActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String decision = intent.getStringExtra("affil");
 
-//        if (decision.equals("good")) {
-//            mHeroListView.setAdapter(goodAdapter);
-//            mHeroListView.setOnItemClickListener(new AdapterView.OnItemClickListener) {
-//                @Override BECAUSE ANNOTATIONS AREN'T ALLOWED HERE, HOW DO I ACCOMPLISH BRANCHING?
-//                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                }
-//            }
-//        }
+        if (decision.equals("good")) {
+            mHeroListView.setAdapter(goodAdapter);
+        }
+        if (decision.equals("evil")) {
+            mHeroListView.setAdapter(evilAdapter);
+        }
 
     }
 }
