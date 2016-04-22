@@ -11,7 +11,7 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.newAdventureTextView) TextView mNewAdventureTextView;
     @Bind(R.id.usernameEditText) EditText mUsernameEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
