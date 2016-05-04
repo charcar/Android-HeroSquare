@@ -6,24 +6,25 @@
     android:background="#000000"
     tools:context="com.epicodus.marvelsquare.MainActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/background"
-        android:scaleType="centerCrop" />
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:src="@drawable/background"-->
+        <!--android:scaleType="centerCrop" />-->
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log In"
         android:id="@+id/logInButton"
+        android:layout_marginBottom="41dp"
         android:layout_above="@+id/browseHeroesButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="64dp" />
+        android:layout_alignLeft="@+id/searchHeroesButton"
+        android:layout_alignStart="@+id/searchHeroesButton" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,14 +32,46 @@
         android:text="Browse Heroes"
         android:id="@+id/browseHeroesButton"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"
+        android:id="@+id/searchHeroesButton"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start your adventure"
+        android:text="decide your fate"
         android:id="@+id/startChoiceButton"
+        android:layout_below="@+id/logInButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="find your hero. mark your territory"
+        android:id="@+id/titleTextView"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFFFFFFF" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="find your hero"
+        android:textColorHint="#FFFFFF"
+        android:textAlignment="center"
+        android:ems="10"
+        android:id="@+id/heroSearchEditText"
+        android:layout_above="@+id/searchHeroesButton"
         android:layout_centerHorizontal="true" />
 
 

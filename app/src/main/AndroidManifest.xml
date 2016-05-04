@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.marvelsquare">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -24,7 +26,8 @@
         <activity android:name=".TeamChoiceActivity" />
         <activity android:name=".HeroChoiceActivity" />
         <activity android:name=".AllHeroesActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".HeroesActivity"></activity>
     </application>
 
 </manifest>
