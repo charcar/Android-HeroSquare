@@ -1,8 +1,10 @@
-package com.epicodus.marvelsquare;
+package com.epicodus.marvelsquare.services;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+
+import com.epicodus.marvelsquare.Constants;
 
 import okhttp3.Call;
 import okhttp3.Callback;

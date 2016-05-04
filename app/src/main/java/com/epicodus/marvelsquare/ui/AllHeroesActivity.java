@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare;
+package com.epicodus.marvelsquare.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.epicodus.marvelsquare.R;
 
 public class AllHeroesActivity extends AppCompatActivity {
     private ListView mAllHeroesListView;

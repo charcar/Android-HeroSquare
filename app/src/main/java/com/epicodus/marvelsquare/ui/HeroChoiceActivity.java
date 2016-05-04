@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare;
+package com.epicodus.marvelsquare.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.epicodus.marvelsquare.R;
 
 import java.util.ArrayList;
 
