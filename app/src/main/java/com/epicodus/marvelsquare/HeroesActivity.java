@@ -20,12 +20,12 @@ public class HeroesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_heroes);
 
         Intent intent = getIntent();
-        String hero = intent.getStringExtra("hero");
-        getHeroes(hero);
+        String name = intent.getStringExtra("name");
+        getHeroes(name);
     }
 
-    private void getHeroes(final String hero) {
-        ComicvineService.findCharacters(hero, new Callback() {
+    private void getHeroes(final String name) {
+        ComicvineService.findCharacters(name, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -36,7 +36,7 @@ public class HeroesActivity extends AppCompatActivity {
                 try {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
-                        Log.v("HELLO", hero);
+                        Log.v("HELLO", name);
                         Log.v("JSON DATA", jsonData);
                     }
                 } catch (IOException e) {
