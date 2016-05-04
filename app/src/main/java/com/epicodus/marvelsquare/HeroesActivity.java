@@ -24,7 +24,7 @@ public class HeroesActivity extends AppCompatActivity {
         getHeroes(hero);
     }
 
-    private void getHeroes(String hero) {
+    private void getHeroes(final String hero) {
         ComicvineService.findCharacters(hero, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -36,6 +36,7 @@ public class HeroesActivity extends AppCompatActivity {
                 try {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
+                        Log.v("HELLO", hero);
                         Log.v("JSON DATA", jsonData);
                     }
                 } catch (IOException e) {
