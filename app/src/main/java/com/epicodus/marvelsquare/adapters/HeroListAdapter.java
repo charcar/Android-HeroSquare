@@ -22,6 +22,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroViewHolder> {
+    private static final int MAX_WIDTH = 150;
+    private static final int MAX_HEIGHT = 150;
+
     private ArrayList<Hero> mHeroes = new ArrayList<>();
     private Context mContext;
 
@@ -72,7 +75,12 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroVi
         }
 
         public void bindHero(Hero hero) {
-            Picasso.with(mContext).load(hero.getIconImageUrl()).into(mHeroThumbImageView);
+            Picasso.with(mContext)
+                    .load(hero.getIconImageUrl())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerCrop()
+                    .into(mHeroThumbImageView);
+
             mHeroNameTextView.setText(hero.getName());
             mRealNameTextView.setText(hero.getRealName());
             mOriginTextView.setText(hero.getOrigin());

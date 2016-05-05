@@ -20,6 +20,9 @@ import butterknife.ButterKnife;
 
 
 public class HeroDetailFragment extends Fragment {
+    private static final int MAX_WIDTH = 450;
+    private static final int MAX_HEIGHT = 350;
+
     @Bind(R.id.bannerHeroImageView) ImageView mBannerImageLabel;
     @Bind(R.id.heroNameTextView) TextView mHeroNameLabel;
     @Bind(R.id.realNameTextView) TextView mRealNameLabel;
@@ -53,7 +56,12 @@ public class HeroDetailFragment extends Fragment {
 
 
 //        SHOULD THIS BE WHERE I PARSE OUT THE HTML FROM THE API CALL?
-        Picasso.with(view.getContext()).load(mHero.getScreenImageUrl()).into(mBannerImageLabel);
+        Picasso.with(view.getContext())
+                .load(mHero.getScreenImageUrl())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mBannerImageLabel);
+
         mHeroNameLabel.setText(mHero.getName());
         mRealNameLabel.setText(mHero.getRealName());
         mPopularityLabel.setText(Integer.toString(mHero.getPopularity()));
