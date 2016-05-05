@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="need to start a new adventure?"
+        android:text="invite your friends!"
         android:id="@+id/newAdventureTextView"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

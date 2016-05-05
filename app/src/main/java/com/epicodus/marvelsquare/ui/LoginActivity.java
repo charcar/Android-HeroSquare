@@ -14,7 +14,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.newAdventureTextView) TextView mNewAdventureTextView;
+    @Bind(R.id.newAdventureTextView) TextView mInviteFriends;
     @Bind(R.id.usernameEditText) EditText mUsernameEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
     @Bind(R.id.userAuthButton) Button mUserAuthButton;
@@ -24,17 +24,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mNewAdventureTextView.setOnClickListener(this);
+        mInviteFriends.setOnClickListener(this);
 //        Need to send Auth credentials to session storage,
 //        possibly username in top nav bar?
     }
 
     public void onClick(View v) {
-        if(v == mNewAdventureTextView) {
-            Intent intent = new Intent(LoginActivity.this, AffiliationChoiceActivity.class);
-            startActivity(intent);
-        }
+        if(v == mInviteFriends) {
+            Intent textMessageIntent = new Intent();
+            textMessageIntent.setAction(Intent.ACTION_SEND);
+            String text = "Come play HeroSquare with me!";
+            textMessageIntent.putExtra(Intent.EXTRA_TEXT, text);
+            textMessageIntent.setType("text/plain");
+            startActivity(textMessageIntent);
 
+        }
         if(v == mUserAuthButton) {
 //            Will redirect to game screen
             String username = mUsernameEditText.getText().toString();

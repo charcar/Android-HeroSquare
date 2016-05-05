@@ -1,11 +1,13 @@
 package com.epicodus.marvelsquare.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +33,7 @@ public class HeroDetailFragment extends Fragment {
     @Bind(R.id.aliasTextView) TextView mAliasLabel;
     @Bind(R.id.bioTextView) TextView mBioLabel;
     @Bind(R.id.fullDescriptionTextView) TextView mFullDescriptionLabel;
+    @Bind(R.id.saveHeroButton) Button mSaveHeroButton;
 
     private Hero mHero;
 
@@ -54,6 +57,8 @@ public class HeroDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_hero_detail, container, false);
         ButterKnife.bind(this, view);
 
+//        mSaveHeroButton.setOnClickListener(this);
+
 
 //        SHOULD THIS BE WHERE I PARSE OUT THE HTML FROM THE API CALL?
         Picasso.with(view.getContext())
@@ -71,5 +76,19 @@ public class HeroDetailFragment extends Fragment {
         mFullDescriptionLabel.setText(mHero.getDescription());
         return view;
     }
+
+//    Note: After user has chosen hero, dialogfragment appears asking them if they'd like to 'share'
+//    their choice via implicit intent either through text or social media. I would like to figure
+//    out how to pass the hero name to the dialogFragment from this fragment, and then either pass
+//    that along with some text into an implicit intent, or give user the option to continue along
+//    with the rest of the app
+
+//    @Override
+//    public void onClick(View v) {
+//        if (v == mSaveHeroButton) {
+//            Intent intent = new Intent(HeroDetailFragment.this, );
+//            startActivity(intent);
+//        }
+//    }
 
 }

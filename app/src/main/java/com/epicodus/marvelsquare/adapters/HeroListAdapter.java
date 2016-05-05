@@ -79,6 +79,7 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroVi
                     .load(hero.getIconImageUrl())
                     .resize(MAX_WIDTH, MAX_HEIGHT)
                     .centerCrop()
+                    .placeholder(R.drawable.heroPlaceholderImage)
                     .into(mHeroThumbImageView);
 
             mHeroNameTextView.setText(hero.getName());

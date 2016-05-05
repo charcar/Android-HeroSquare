@@ -20,11 +20,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class HeroeListActivity extends AppCompatActivity {
+public class HeroListActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private HeroListAdapter mAdapter;
     public ArrayList<Hero> mHeroes = new ArrayList<>();
-    public static final String TAG = HeroeListActivity.class.getSimpleName();
+    public static final String TAG = HeroListActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,12 +50,12 @@ public class HeroeListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mHeroes = comicvineService.processResults(response);
 
-                HeroeListActivity.this.runOnUiThread(new Runnable() {
+                HeroListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new HeroListAdapter(getApplicationContext(), mHeroes);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HeroeListActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HeroListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }
