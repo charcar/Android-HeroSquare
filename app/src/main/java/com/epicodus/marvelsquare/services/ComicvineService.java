@@ -5,12 +5,21 @@ import android.util.Log;
 import android.view.View;
 
 import com.epicodus.marvelsquare.Constants;
+import com.epicodus.marvelsquare.models.Hero;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 public class ComicvineService {
 
@@ -42,5 +51,38 @@ public class ComicvineService {
 
         Call call = client.newCall(request);
         call.enqueue(callback);
+    }
+
+    public ArrayList<Hero> processResults(Response response) {
+        ArrayList<Hero> heroes = new ArrayList<>();
+
+        try {
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject comicvineJSON = new JSONObject(jsonData);
+                JSONArray resultsJSON = comicvineJSON.getJSONArray("results");
+                for (int i = 0; i < resultsJSON.length(); i++) {
+                    JSONObject heroJSON = resultsJSON.getJSONObject(i);
+                    String name = heroJSON.optString("name", "N/A");
+                    String aliases = heroJSON.optString("aliases", "N/A");
+                    String realName = heroJSON.optString("real_name", "N/A");
+                    String description = heroJSON.optString("deck", "N/A");
+                    String bio = heroJSON.optString("description", "N/A");
+                    String iconImageUrl = heroJSON.getJSONObject("image").optString("icon_url", "N/A");
+                    String screenImageUrl = heroJSON.getJSONObject("image").optString("screen_url", "N/A");
+                    String origin = heroJSON.getJSONObject("origin").optString("name", "N/A");
+                    int popularity = heroJSON.getInt("count_of_issue_appearances");
+
+                    Hero hero = new Hero(name, aliases, realName, description, bio, iconImageUrl,
+                            screenImageUrl, origin, popularity);
+                    heroes.add(hero);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return heroes;
     }
 }

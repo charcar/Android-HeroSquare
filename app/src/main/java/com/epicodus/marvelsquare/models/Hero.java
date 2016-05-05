@@ -3,19 +3,23 @@ package com.epicodus.marvelsquare.models;
 
 public class Hero {
     private String mName;
+    private String mAliases;
     private String mRealName;
     private String mDescription;
     private String mBio;
-    private String mImageUrl;
+    private String mIconImageUrl;
+    private String mScreenImageUrl;
     private String mOrigin;
     private int mPopularity;
 
-    public Hero(String name, String realName, String description, String bio, String imageUrl, String origin, int popularity) {
+    public Hero(String name, String aliases, String realName, String description, String bio, String iconImageUrl, String screenImageUrl, String origin, int popularity) {
         this.mName = name;
+        this.mAliases = aliases;
         this.mRealName = realName;
         this.mDescription = description;
         this.mBio = bio;
-        this.mImageUrl = imageUrl;
+        this.mIconImageUrl = iconImageUrl;
+        this.mScreenImageUrl = screenImageUrl;
         this.mOrigin = origin;
         this.mPopularity = popularity;
     }
@@ -23,6 +27,8 @@ public class Hero {
     public String getName() {
         return mName;
     }
+
+    public String getAliases() { return mAliases; }
 
     public String getDescription() {
         return mDescription;
@@ -36,9 +42,11 @@ public class Hero {
         return mBio;
     }
 
-    public String getImageUrl() {
-        return mImageUrl;
+    public String getIconImageUrl() {
+        return mIconImageUrl;
     }
+
+    public String getScreenImageUrl() { return mScreenImageUrl; }
 
     public String getOrigin() {
         return mOrigin;
