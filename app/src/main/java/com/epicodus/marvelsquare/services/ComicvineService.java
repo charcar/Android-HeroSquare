@@ -33,11 +33,12 @@ public class ComicvineService {
         urlBuilder.addQueryParameter(Constants.COMICVINE_CHARACTER_QUERY_PARAMETER, COMICVINE_NAME_SIGNIFIER + name);
 
         String url = urlBuilder.build().toString();
-        Log.v("Full URL PATH", url);
+//        Log.v("Full URL PATH", url);
 
         Request request = new Request.Builder()
                 .url(url)
                 .build();
+
 
         Call call = client.newCall(request);
         call.enqueue(callback);

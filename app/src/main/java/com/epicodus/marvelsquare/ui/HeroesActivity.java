@@ -15,7 +15,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class HeroesActivity extends AppCompatActivity {
-    public static final String TAG = HeroesActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +38,7 @@ public class HeroesActivity extends AppCompatActivity {
                 try {
                     String jsonData = response.body().string();
                     if (response.isSuccessful()) {
-                        Log.v("HELLO", name);
-                        Log.v("JSON DATA", jsonData);
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
