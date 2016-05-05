@@ -1,16 +1,20 @@
 package com.epicodus.marvelsquare.models;
 
+import org.parceler.Parcel;
 
+@Parcel
 public class Hero {
-    private String mName;
-    private String mAliases;
-    private String mRealName;
-    private String mDescription;
-    private String mBio;
-    private String mIconImageUrl;
-    private String mScreenImageUrl;
-    private String mOrigin;
-    private int mPopularity;
+    String mName;
+    String mAliases;
+    String mRealName;
+    String mDescription;
+    String mBio;
+    String mIconImageUrl;
+    String mScreenImageUrl;
+    String mOrigin;
+    int mPopularity;
+
+    public Hero(){}
 
     public Hero(String name, String aliases, String realName, String description, String bio, String iconImageUrl, String screenImageUrl, String origin, int popularity) {
         this.mName = name;

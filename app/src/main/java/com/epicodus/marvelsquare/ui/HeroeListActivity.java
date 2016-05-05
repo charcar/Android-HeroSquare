@@ -3,11 +3,11 @@ package com.epicodus.marvelsquare.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.epicodus.marvelsquare.R;
+import com.epicodus.marvelsquare.adapters.HeroListAdapter;
 import com.epicodus.marvelsquare.models.Hero;
 import com.epicodus.marvelsquare.services.ComicvineService;
 
@@ -20,10 +20,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class HeroesActivity extends AppCompatActivity {
+public class HeroeListActivity extends AppCompatActivity {
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private HeroListAdapter mAdapter;
     public ArrayList<Hero> mHeroes = new ArrayList<>();
-    public static final String TAG = HeroesActivity.class.getSimpleName();
-    @Bind(R.id.listView) ListView mListView;
+    public static final String TAG = HeroeListActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,20 +50,14 @@ public class HeroesActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mHeroes = comicvineService.processResults(response);
 
-                HeroesActivity.this.runOnUiThread(new Runnable() {
+                HeroeListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
-                        String[] heroNames = new String[mHeroes.size()];
-                        for (int i = 0; i < heroNames.length; i++) {
-                            heroNames[i] = mHeroes.get(i).getName();
-                        }
-                        ArrayAdapter adapter = new ArrayAdapter(HeroesActivity.this, android.R.layout.simple_list_item_1, heroNames);
-                        mListView.setAdapter(adapter);
-
-                        for (Hero hero : mHeroes) {
-                            Log.d(TAG, "Aliases: " + hero.getAliases());
-                        }
+                        mAdapter = new HeroListAdapter(getApplicationContext(), mHeroes);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HeroeListActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
 

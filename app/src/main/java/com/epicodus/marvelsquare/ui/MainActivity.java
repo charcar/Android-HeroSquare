@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mSearchHeroesButton) {
             String name = mHeroSearchEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, HeroesActivity.class);
+            Intent intent = new Intent(MainActivity.this, HeroeListActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
         }
