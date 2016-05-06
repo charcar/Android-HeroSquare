@@ -10,6 +10,7 @@ import com.epicodus.marvelsquare.models.Hero;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,6 +54,10 @@ public class ComicvineService {
         call.enqueue(callback);
     }
 
+    public static String html2text(String html) {
+        return Jsoup.parse(html).text();
+    }
+
     public ArrayList<Hero> processResults(Response response) {
         ArrayList<Hero> heroes = new ArrayList<>();
 
@@ -67,7 +72,10 @@ public class ComicvineService {
                     String aliases = heroJSON.optString("aliases", "N/A");
                     String realName = heroJSON.optString("real_name", "N/A");
                     String description = heroJSON.optString("deck", "N/A");
-                    String bio = heroJSON.optString("description", "N/A");
+
+                    String rawBio = heroJSON.optString("description", "N/A");
+                    String bio = html2text(rawBio);
+
                     String iconImageUrl = heroJSON.getJSONObject("image").optString("icon_url", "N/A");
                     String screenImageUrl = heroJSON.getJSONObject("image").optString("screen_url", "N/A");
                     String origin = heroJSON.getJSONObject("origin").optString("name", "N/A");

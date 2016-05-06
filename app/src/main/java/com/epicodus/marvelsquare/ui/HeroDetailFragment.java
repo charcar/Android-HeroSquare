@@ -4,6 +4,7 @@ package com.epicodus.marvelsquare.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.epicodus.marvelsquare.R;
 import com.epicodus.marvelsquare.models.Hero;
 import com.squareup.picasso.Picasso;
 
+import org.jsoup.Jsoup;
 import org.parceler.Parcels;
 
 import butterknife.Bind;
@@ -71,10 +73,15 @@ public class HeroDetailFragment extends Fragment {
         mRealNameLabel.setText(mHero.getRealName());
         mPopularityLabel.setText(Integer.toString(mHero.getPopularity()));
         mOriginLabel.setText(mHero.getOrigin());
+        Log.d("Aliases: ", mHero.getAliases());
         mAliasLabel.setText(mHero.getAliases());
-        mBioLabel.setText(mHero.getBio());
+
         mFullDescriptionLabel.setText(mHero.getDescription());
         return view;
+    }
+
+    public static String html2text(String html) {
+        return Jsoup.parse(html).text();
     }
 
 //    Note: After user has chosen hero, dialogfragment appears asking them if they'd like to 'share'
