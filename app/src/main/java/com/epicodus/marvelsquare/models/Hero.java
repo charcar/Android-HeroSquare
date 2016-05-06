@@ -13,6 +13,7 @@ public class Hero {
     String screenImageUrl;
     String origin;
     int popularity;
+    private String pushId;
 
     public Hero(){}
 
@@ -59,4 +60,13 @@ public class Hero {
     public int getPopularity() {
         return popularity;
     }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
+
 }

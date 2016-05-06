@@ -2,7 +2,9 @@ package com.epicodus.marvelsquare.ui;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ import butterknife.ButterKnife;
 
 
 public class HeroDetailFragment extends Fragment implements View.OnClickListener {
+    private SharedPreferences mSharedPreferences;
     private static final int MAX_WIDTH = 450;
     private static final int MAX_HEIGHT = 350;
 
@@ -54,6 +57,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHero = Parcels.unwrap(getArguments().getParcelable("hero"));
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
     }
 
     @Override
@@ -92,9 +96,13 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         if (v == mSaveHeroButton) {
-            Firebase ref = new Firebase(Constants.FIREBASE_URL_HEROES);
-            ref.push().setValue(mHero);
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+            Firebase userHeroesFirebaseRef = new Firebase(Constants.FIREBASE_URL_HEROES).child(userUid);
+            Firebase pushRef = userHeroesFirebaseRef.push();
+            String heroesPushId = pushRef.getKey();
+            mHero.setPushId(heroesPushId);
+            pushRef.setValue(mHero);
+            Toast.makeText(getContext(), "Well Chosen", Toast.LENGTH_SHORT).show();
         }
     }
 
