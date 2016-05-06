@@ -4,59 +4,59 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Hero {
-    String mName;
-    String mAliases;
-    String mRealName;
-    String mDescription;
-    String mBio;
-    String mIconImageUrl;
-    String mScreenImageUrl;
-    String mOrigin;
-    int mPopularity;
+    String name;
+    String aliases;
+    String realName;
+    String description;
+    String bio;
+    String iconImageUrl;
+    String screenImageUrl;
+    String origin;
+    int popularity;
 
     public Hero(){}
 
     public Hero(String name, String aliases, String realName, String description, String bio, String iconImageUrl, String screenImageUrl, String origin, int popularity) {
-        this.mName = name;
-        this.mAliases = aliases;
-        this.mRealName = realName;
-        this.mDescription = description;
-        this.mBio = bio;
-        this.mIconImageUrl = iconImageUrl;
-        this.mScreenImageUrl = screenImageUrl;
-        this.mOrigin = origin;
-        this.mPopularity = popularity;
+        this.name = name;
+        this.aliases = aliases;
+        this.realName = realName;
+        this.description = description;
+        this.bio = bio;
+        this.iconImageUrl = iconImageUrl;
+        this.screenImageUrl = screenImageUrl;
+        this.origin = origin;
+        this.popularity = popularity;
     }
 
     public String getName() {
-        return mName;
+        return name;
     }
 
-    public String getAliases() { return mAliases; }
+    public String getAliases() { return aliases; }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public String getRealName() {
-        return mRealName;
+        return realName;
     }
 
     public String getBio() {
-        return mBio;
+        return bio;
     }
 
     public String getIconImageUrl() {
-        return mIconImageUrl;
+        return iconImageUrl;
     }
 
-    public String getScreenImageUrl() { return mScreenImageUrl; }
+    public String getScreenImageUrl() { return screenImageUrl; }
 
     public String getOrigin() {
-        return mOrigin;
+        return origin;
     }
 
     public int getPopularity() {
-        return mPopularity;
+        return popularity;
     }
 }

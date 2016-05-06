@@ -11,9 +11,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.marvelsquare.Constants;
 import com.epicodus.marvelsquare.R;
 import com.epicodus.marvelsquare.models.Hero;
+import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
@@ -23,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class HeroDetailFragment extends Fragment {
+public class HeroDetailFragment extends Fragment implements View.OnClickListener {
     private static final int MAX_WIDTH = 450;
     private static final int MAX_HEIGHT = 350;
 
@@ -58,11 +61,8 @@ public class HeroDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hero_detail, container, false);
         ButterKnife.bind(this, view);
+        mSaveHeroButton.setOnClickListener(this);
 
-//        mSaveHeroButton.setOnClickListener(this);
-
-
-//        SHOULD THIS BE WHERE I PARSE OUT THE HTML FROM THE API CALL?
         Picasso.with(view.getContext())
                 .load(mHero.getScreenImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
@@ -73,7 +73,6 @@ public class HeroDetailFragment extends Fragment {
         mRealNameLabel.setText(mHero.getRealName());
         mPopularityLabel.setText(Integer.toString(mHero.getPopularity()));
         mOriginLabel.setText(mHero.getOrigin());
-        Log.d("Aliases: ", mHero.getAliases());
         mAliasLabel.setText(mHero.getAliases());
 
         mFullDescriptionLabel.setText(mHero.getDescription());
@@ -90,12 +89,13 @@ public class HeroDetailFragment extends Fragment {
 //    that along with some text into an implicit intent, or give user the option to continue along
 //    with the rest of the app
 
-//    @Override
-//    public void onClick(View v) {
-//        if (v == mSaveHeroButton) {
-//            Intent intent = new Intent(HeroDetailFragment.this, );
-//            startActivity(intent);
-//        }
-//    }
+    @Override
+    public void onClick(View v) {
+        if (v == mSaveHeroButton) {
+            Firebase ref = new Firebase(Constants.FIREBASE_URL_HEROES);
+            ref.push().setValue(mHero);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }
