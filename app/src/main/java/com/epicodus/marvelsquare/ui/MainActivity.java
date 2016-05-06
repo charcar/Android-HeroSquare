@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mSearchHeroesButton) {
             String name = mHeroSearchEditText.getText().toString();
-            saveHeroToFirebase(name);
             Intent intent = new Intent(MainActivity.this, HeroListActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
@@ -58,8 +57,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void saveHeroToFirebase(String hero) {
-        Firebase searchedHeroRef = new Firebase(Constants.FIREBASE_URL_SEARCHED_HERO);
-        searchedHeroRef.push().setValue(hero);
-    }
 }
