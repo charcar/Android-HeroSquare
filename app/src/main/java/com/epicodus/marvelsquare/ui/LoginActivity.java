@@ -1,5 +1,6 @@
 package com.epicodus.marvelsquare.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mSharedPreferencesEditor;
+    private ProgressDialog mAuthProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ButterKnife.bind(this);
         mRegisterTextView.setOnClickListener(this);
         mPasswordLoginButton.setOnClickListener(this);
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Contacting Uatu the Watcher...");
+        mAuthProgressDialog.setMessage("The Watcher is Verifying You");
+        mAuthProgressDialog.setCancelable(false);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
         mSharedPreferencesEditor = mSharedPreferences.edit();
@@ -53,6 +59,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(intent);
             finish();
         }
+
+        mAuthProgressDialog.show();
     }
 
     public void loginWithPassword() {
@@ -70,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onAuthenticated(AuthData authData) {
+                mAuthProgressDialog.dismiss();
                 if (authData != null) {
                     String userUid = authData.getUid();
                     mSharedPreferencesEditor.putString(Constants.KEY_UID, userUid).apply();
@@ -82,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
+                mAuthProgressDialog.dismiss();
                 switch (firebaseError.getCode()) {
                     case FirebaseError.INVALID_EMAIL:
                     case FirebaseError.USER_DOES_NOT_EXIST:

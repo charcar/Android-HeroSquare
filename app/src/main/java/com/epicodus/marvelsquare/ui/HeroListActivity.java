@@ -35,8 +35,8 @@ public class HeroListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mQueryProgressDialog = new ProgressDialog(this);
-        mQueryProgressDialog.setTitle("Contacting the Watchtower");
-        mQueryProgressDialog.setMessage("Looking for heroes for you");
+        mQueryProgressDialog.setTitle("Contacting the Watcher");
+        mQueryProgressDialog.setMessage("Uatu sees all");
         mQueryProgressDialog.setCancelable(false);
 
         Intent intent = getIntent();
