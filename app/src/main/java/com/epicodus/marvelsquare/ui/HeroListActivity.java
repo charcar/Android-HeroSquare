@@ -1,5 +1,6 @@
 package com.epicodus.marvelsquare.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class HeroListActivity extends AppCompatActivity {
     private HeroListAdapter mAdapter;
     public ArrayList<Hero> mHeroes = new ArrayList<>();
     public static final String TAG = HeroListActivity.class.getSimpleName();
+    private ProgressDialog mQueryProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,16 @@ public class HeroListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_heroes);
         ButterKnife.bind(this);
 
+        mQueryProgressDialog = new ProgressDialog(this);
+        mQueryProgressDialog.setTitle("Contacting the Watchtower");
+        mQueryProgressDialog.setMessage("Looking for heroes for you");
+        mQueryProgressDialog.setCancelable(false);
+
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         getHeroes(name);
+
+        mQueryProgressDialog.show();
     }
 
     private void getHeroes(final String name) {
@@ -43,12 +52,14 @@ public class HeroListActivity extends AppCompatActivity {
          comicvineService.findCharacters(name, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                mQueryProgressDialog.dismiss();
                 e.printStackTrace();
             }
 
             @Override
             public void onResponse(Call call, Response response) {
                 mHeroes = comicvineService.processResults(response);
+                mQueryProgressDialog.dismiss();
 
                 HeroListActivity.this.runOnUiThread(new Runnable() {
                     @Override
