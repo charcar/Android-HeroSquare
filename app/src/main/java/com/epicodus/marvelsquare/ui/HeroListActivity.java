@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.epicodus.marvelsquare.R;
 import com.epicodus.marvelsquare.adapters.HeroListAdapter;
@@ -60,18 +62,22 @@ public class HeroListActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mHeroes = comicvineService.processResults(response);
                 mQueryProgressDialog.dismiss();
+//                if (mHeroes.size() == 0) {
+//                    Toast.makeText(HeroListActivity.this, "Unexpected issue, try a different search", Toast.LENGTH_SHORT).show();
+//                } else {
 
-                HeroListActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter = new HeroListAdapter(getApplicationContext(), mHeroes);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HeroListActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
-                    }
-                });
+                    HeroListActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mAdapter = new HeroListAdapter(getApplicationContext(), mHeroes);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(HeroListActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
 
+                        }
+                    });
+//              } HOW TO HANDLE POOR USER QUERIES?
             }
         });
     }
