@@ -155,12 +155,24 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="They'll Do"
+                android:text="Let's go!"
                 android:id="@+id/saveHeroButton"
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorPrimaryDarkest"
                 android:textColor="@android:color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:visibility="invisible"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login/Create Account to start"
+                android:id="@+id/logInCreateAccountButton"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDarkest"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:visibility=""/>
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

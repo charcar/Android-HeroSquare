@@ -57,13 +57,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="CHOOSE YOUR HERO. MARK YOUR TERRITORY"
+        android:text="CHOOSE YOUR HERO"
         android:textStyle="italic"
-        android:textSize="18dp"
-        android:id="@+id/titleTextView"
+        android:textSize="30dp"
+        android:id="@+id/title1TextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+
         android:textColor="#FFFFFFFF" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="MARK YOUR TERRITORY"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:id="@+id/title2TextView"
+        android:textColor="#FFFFFFFF"
+        android:layout_below="@+id/title1TextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
 
     <EditText
         android:layout_width="wrap_content"
