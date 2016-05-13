@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String name = intent.getStringExtra("message");
         if (name != null) {
             Toast toast = Toast.makeText(MainActivity.this,
-                    "Invalid Search", Toast.LENGTH_LONG);
+                    "Invalid Search, Try Again", Toast.LENGTH_LONG);
             toast.setGravity(Gravity.CENTER| Gravity.CENTER, 0, 0);
             toast.show();
         }

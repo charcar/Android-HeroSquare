@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="popularity"
                 android:id="@+id/popularityTextView"
-                android:layout_alignTop="@+id/realNameTextView"
+                android:layout_alignTop="@+id/aliasTextView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:textColor="@color/decadic" />
@@ -86,11 +86,12 @@
                 android:layout_height="wrap_content"
                 android:text="origin"
                 android:id="@+id/originTextView"
-                android:layout_alignBottom="@+id/aliasTextView"
+                android:layout_alignBottom="@+id/realNameTextView"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:textColor="@android:color/black"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_alignParentTop="true" />
 
             <TextView
                 android:layout_width="wrap_content"
