@@ -1,7 +1,6 @@
-package com.epicodus.marvelsquare.ui;
+package com.epicodus.herosquare.ui;
 
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.epicodus.marvelsquare.Constants;
-import com.epicodus.marvelsquare.R;
-import com.epicodus.marvelsquare.models.Hero;
+import com.epicodus.herosquare.Constants;
+import com.epicodus.herosquare.R;
+import com.epicodus.herosquare.models.Hero;
 import com.firebase.client.Firebase;
 import com.squareup.picasso.Picasso;
 

@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare.ui;
+package com.epicodus.herosquare.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -6,13 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.Toast;
 
-import com.epicodus.marvelsquare.R;
-import com.epicodus.marvelsquare.adapters.HeroListAdapter;
-import com.epicodus.marvelsquare.models.Hero;
-import com.epicodus.marvelsquare.services.ComicvineService;
+import com.epicodus.herosquare.R;
+import com.epicodus.herosquare.adapters.HeroListAdapter;
+import com.epicodus.herosquare.models.Hero;
+import com.epicodus.herosquare.services.ComicvineService;
 
 import java.io.IOException;
 import java.util.ArrayList;

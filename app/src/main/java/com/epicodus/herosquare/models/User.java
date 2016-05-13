@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare.models;
+package com.epicodus.herosquare.models;
 
 
 public class User {

@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare.ui;
+package com.epicodus.herosquare.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,8 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.epicodus.marvelsquare.Constants;
-import com.epicodus.marvelsquare.R;
+import com.epicodus.herosquare.Constants;
+import com.epicodus.herosquare.R;
 import com.firebase.client.Firebase;
 
 import butterknife.Bind;

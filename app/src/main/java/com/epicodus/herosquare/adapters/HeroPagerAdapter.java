@@ -1,11 +1,11 @@
-package com.epicodus.marvelsquare.adapters;
+package com.epicodus.herosquare.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.epicodus.marvelsquare.models.Hero;
-import com.epicodus.marvelsquare.ui.HeroDetailFragment;
+import com.epicodus.herosquare.models.Hero;
+import com.epicodus.herosquare.ui.HeroDetailFragment;
 
 import java.util.ArrayList;
 

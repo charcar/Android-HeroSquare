@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare;
+package com.epicodus.herosquare;
 
 import org.junit.Test;
 

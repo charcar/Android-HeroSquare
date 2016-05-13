@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare.ui;
+package com.epicodus.herosquare.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.epicodus.marvelsquare.Constants;
-import com.epicodus.marvelsquare.R;
+import com.epicodus.herosquare.Constants;
+import com.epicodus.herosquare.R;
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

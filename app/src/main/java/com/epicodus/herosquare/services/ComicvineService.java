@@ -1,11 +1,7 @@
-package com.epicodus.marvelsquare.services;
+package com.epicodus.herosquare.services;
 
-import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
-
-import com.epicodus.marvelsquare.Constants;
-import com.epicodus.marvelsquare.models.Hero;
+import com.epicodus.herosquare.Constants;
+import com.epicodus.herosquare.models.Hero;
 
 import org.json.JSONArray;
 import org.json.JSONException;

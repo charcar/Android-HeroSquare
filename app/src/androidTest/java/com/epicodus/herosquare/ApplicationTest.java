@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare;
+package com.epicodus.herosquare;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

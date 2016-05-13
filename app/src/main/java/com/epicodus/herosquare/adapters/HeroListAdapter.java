@@ -1,4 +1,4 @@
-package com.epicodus.marvelsquare.adapters;
+package com.epicodus.herosquare.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.epicodus.marvelsquare.R;
-import com.epicodus.marvelsquare.models.Hero;
-import com.epicodus.marvelsquare.ui.HeroDetailActivity;
+import com.epicodus.herosquare.R;
+import com.epicodus.herosquare.models.Hero;
+import com.epicodus.herosquare.ui.HeroDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
