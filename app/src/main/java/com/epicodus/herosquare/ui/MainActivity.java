@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.heroSearchEditText) EditText mHeroSearchEditText;
     @Bind(R.id.searchHeroesButton) Button mSearchHeroesButton;
     @Bind(R.id.logInButton) Button mLogInButton;
+    @Bind(R.id.mapClaimButton) Button mClaimButton;
+    @Bind(R.id.seeTeamButton) Button mSeeTeamButton;
+
     private Firebase mFirebaseRef;
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSearchHeroesButton.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
 
+
         Intent intent = getIntent();
         String name = intent.getStringExtra("message");
         if (name != null) {
@@ -52,10 +56,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toast.setGravity(Gravity.CENTER| Gravity.CENTER, 0, 0);
             toast.show();
         }
+
+        buttonShowStatus();
+
     }
 
     @Override
     public void onClick(View v) {
+
         if (v == mSearchHeroesButton) {
             String name = mHeroSearchEditText.getText().toString();
 
@@ -91,6 +99,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFirebaseRef.unauth();
         mEditor.putString(Constants.KEY_UID, "notLogged").apply();
         Log.d("succesfully logged out", "wow");
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void buttonShowStatus() {
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String uid = prefs.getString(Constants.KEY_UID, null);
+        Log.d("Shared Preferences", uid + "");
+
+        if ("notLogged".equals(uid)) {
+            mLogInButton.setVisibility(View.VISIBLE);
+        }
+        if (uid != "notLogged") {
+            mSeeTeamButton.setVisibility(View.VISIBLE);
+            mClaimButton.setVisibility(View.VISIBLE);
+        }
+
     }
 
 }
