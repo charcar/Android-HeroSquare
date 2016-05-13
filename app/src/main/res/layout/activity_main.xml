@@ -75,5 +75,23 @@
         android:layout_centerHorizontal="true"
         android:textStyle="italic" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Claim Spot"
+        android:id="@+id/mapClaimButton"
+        android:layout_alignBottom="@+id/logInButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Team"
+        android:id="@+id/seeTeamButton"
+        android:layout_alignBottom="@+id/logInButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

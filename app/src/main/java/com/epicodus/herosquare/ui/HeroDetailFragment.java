@@ -1,6 +1,7 @@
 package com.epicodus.herosquare.ui;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -65,6 +66,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hero_detail, container, false);
         ButterKnife.bind(this, view);
+        mLogInCreateAccountButton.setOnClickListener(this);
         mSaveHeroButton.setOnClickListener(this);
 
         Picasso.with(view.getContext())
@@ -117,6 +119,10 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
             mHero.setPushId(heroesPushId);
             pushRef.setValue(mHero);
             Toast.makeText(getContext(), "Well Chosen", Toast.LENGTH_SHORT).show();
+        }
+        if (v == mLogInCreateAccountButton) {
+            Intent intent = new Intent(this.getActivity(), LoginActivity.class);
+            startActivity(intent);
         }
     }
 
