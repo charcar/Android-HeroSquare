@@ -61,10 +61,13 @@ public class HeroListActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 mHeroes = comicvineService.processResults(response);
+                if (mHeroes.size() == 0) {
+                    Intent intent = new Intent(HeroListActivity.this, MainActivity.class);
+                    intent.putExtra("message", "invalid");
+                    startActivity(intent);
+                }
                 mQueryProgressDialog.dismiss();
-//                if (mHeroes.size() == 0) {
-//                    Toast.makeText(HeroListActivity.this, "Unexpected issue, try a different search", Toast.LENGTH_SHORT).show();
-//                } else {
+
 
                     HeroListActivity.this.runOnUiThread(new Runnable() {
                         @Override

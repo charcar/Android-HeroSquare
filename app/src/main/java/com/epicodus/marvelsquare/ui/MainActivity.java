@@ -3,12 +3,14 @@ package com.epicodus.marvelsquare.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.epicodus.marvelsquare.Constants;
 import com.epicodus.marvelsquare.R;
@@ -37,12 +39,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mStartChoiceButton.setOnClickListener(this);
         mBrowseHeroesButton.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("message");
+        if (name != null) {
+            Toast toast = Toast.makeText(MainActivity.this,
+                    "Invalid Search", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER| Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     @Override
     public void onClick(View v) {
         if (v == mSearchHeroesButton) {
             String name = mHeroSearchEditText.getText().toString();
+
             Intent intent = new Intent(MainActivity.this, HeroListActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
