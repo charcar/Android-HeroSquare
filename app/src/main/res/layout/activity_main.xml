@@ -20,38 +20,19 @@
         android:layout_height="wrap_content"
         android:text="Log In"
         android:id="@+id/logInButton"
-        android:layout_alignTop="@+id/browseHeroesButton"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Browse Heroes"
-        android:id="@+id/browseHeroesButton"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/heroSearchEditText"
-        android:layout_toStartOf="@+id/heroSearchEditText" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="search"
         android:id="@+id/searchHeroesButton"
-        android:layout_above="@+id/startChoiceButton"
+        android:layout_marginBottom="67dp"
+        android:layout_above="@+id/logInButton"
         android:layout_alignLeft="@+id/logInButton"
-        android:layout_alignStart="@+id/logInButton"
-        android:layout_marginBottom="67dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="decide your fate"
-        android:id="@+id/startChoiceButton"
-        android:layout_alignBottom="@+id/browseHeroesButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/heroSearchEditText"
-        android:layout_toEndOf="@+id/heroSearchEditText" />
+        android:layout_alignStart="@+id/logInButton" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,10 +42,10 @@
         android:textStyle="italic"
         android:textSize="30dp"
         android:id="@+id/title1TextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
 
-        android:textColor="#FFFFFFFF" />
+        android:textColor="#FFFFFFFF"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:hint="find your hero"
+        android:hint="ex. red, girl, bat, surfer"
         android:textColorHint="#FFFFFF"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -91,7 +72,8 @@
         android:ems="10"
         android:id="@+id/heroSearchEditText"
         android:layout_above="@+id/searchHeroesButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="italic" />
 
 
 </RelativeLayout>

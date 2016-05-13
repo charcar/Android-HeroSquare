@@ -35,7 +35,8 @@ tools:context="com.epicodus.marvelsquare.ui.CreateAccountActivity">
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:layout_alignParentBottom="true"
-    android:layout_below="@+id/textView4">
+    android:layout_below="@+id/textView4"
+    android:weightSum="1">
 
     <EditText
         android:id="@+id/usernameEditText"
@@ -95,7 +96,10 @@ tools:context="com.epicodus.marvelsquare.ui.CreateAccountActivity">
         android:textSize="15sp"
         android:text="Already have an account? Log in here!"
         android:id="@+id/loginTextView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.22"
+        android:elegantTextHeight="false"
+        android:paddingBottom="20dp" />
 
 </LinearLayout>
 

@@ -51,6 +51,11 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         if (v == mCreateUserButton) {
             createNewUser();
         }
+        if (v == mLoginTextView) {
+            Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void createNewUser() {

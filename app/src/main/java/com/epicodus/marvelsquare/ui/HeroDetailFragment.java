@@ -42,6 +42,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.bioTextView) TextView mBioLabel;
     @Bind(R.id.fullDescriptionTextView) TextView mFullDescriptionLabel;
     @Bind(R.id.saveHeroButton) Button mSaveHeroButton;
+    @Bind(R.id.logInCreateAccountButton) Button mLogInCreateAccountButton;
 
     private Hero mHero;
 
@@ -80,6 +81,20 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
         mAliasLabel.setText(mHero.getAliases());
 
         mFullDescriptionLabel.setText(mHero.getDescription());
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String uid = prefs.getString(Constants.KEY_UID, null);
+        Log.d("Shared Preferences", uid + "");
+
+        if ("notLogged".equals(uid)) {
+            mLogInCreateAccountButton.setVisibility(View.VISIBLE);
+        }
+        if (uid != "notLogged") {
+            mSaveHeroButton.setVisibility(View.VISIBLE);
+        }
+
+
+
         return view;
     }
 

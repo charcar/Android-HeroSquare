@@ -22,11 +22,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".ui.AffiliationChoiceActivity" />
-    <activity android:name=".ui.TeamChoiceActivity" />
-    <activity android:name=".ui.HeroChoiceActivity" />
-    <activity android:name=".ui.AllHeroesActivity" />
-    <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.HeroListActivity" />
         <activity android:name=".ui.HeroDetailActivity" />
         <activity android:name=".ui.CreateAccountActivity"/>

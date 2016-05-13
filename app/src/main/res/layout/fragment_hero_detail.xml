@@ -161,7 +161,7 @@
                 android:background="@color/colorPrimaryDarkest"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                 android:background="@color/colorPrimaryDarkest"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:visibility=""/>
+                android:visibility="gone"/>
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

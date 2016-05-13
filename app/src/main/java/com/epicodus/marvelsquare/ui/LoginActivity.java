@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-        mAuthProgressDialog.show();
+//        mAuthProgressDialog.show();
     }
 
     public void loginWithPassword() {

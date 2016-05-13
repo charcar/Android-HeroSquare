@@ -1,8 +1,11 @@
 package com.epicodus.marvelsquare.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,10 +25,10 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.heroSearchEditText) EditText mHeroSearchEditText;
     @Bind(R.id.searchHeroesButton) Button mSearchHeroesButton;
-    @Bind(R.id.startChoiceButton) Button mStartChoiceButton;
-    @Bind(R.id.browseHeroesButton) Button mBrowseHeroesButton;
     @Bind(R.id.logInButton) Button mLogInButton;
     private Firebase mFirebaseRef;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
 
     @Override
@@ -35,9 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
         mSearchHeroesButton.setOnClickListener(this);
-        mStartChoiceButton.setOnClickListener(this);
-        mBrowseHeroesButton.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
 
         Intent intent = getIntent();
@@ -57,14 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Intent intent = new Intent(MainActivity.this, HeroListActivity.class);
             intent.putExtra("name", name);
-            startActivity(intent);
-        }
-        if (v == mStartChoiceButton) {
-            Intent intent = new Intent(MainActivity.this, AffiliationChoiceActivity.class);
-            startActivity(intent);
-        }
-        if (v == mBrowseHeroesButton) {
-            Intent intent = new Intent(MainActivity.this, AllHeroesActivity.class);
             startActivity(intent);
         }
         if (v == mLogInButton) {
@@ -93,6 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void logout() {
         mFirebaseRef.unauth();
+        mEditor.putString(Constants.KEY_UID, "notLogged").apply();
+        Log.d("succesfully logged out", "wow");
     }
 
 }
