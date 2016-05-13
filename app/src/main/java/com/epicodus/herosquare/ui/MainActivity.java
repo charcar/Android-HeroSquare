@@ -1,5 +1,6 @@
 package com.epicodus.herosquare.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -10,7 +11,10 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,16 +37,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
+    public void hideKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    public void setupUI(View view) {
+        if(!(view instanceof EditText)) {
+            view.setOnTouchListener(new View.OnTouchListener() {
+                public boolean onTouch(View v, MotionEvent event) {
+                    hideKeyboard(MainActivity.this);
+                    return false;
+                }
+            });
+        }
+
+        if(view instanceof ViewGroup) {
+            for(int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
+                setupUI(innerView);
+            }
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setupUI(findViewById(R.id.parentContainer));
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
+
 
         mSearchHeroesButton.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
@@ -113,8 +142,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mLogInButton.setVisibility(View.VISIBLE);
         }
         if (uid != "notLogged") {
-            mSeeTeamButton.setVisibility(View.VISIBLE);
-            mClaimButton.setVisibility(View.VISIBLE);
+//            Firebase main = new Firebase(Constants.FIREBASE_URL);
+//            if (main.getAuth().equals(null)) {
+                mSeeTeamButton.setVisibility(View.VISIBLE);
+                mClaimButton.setVisibility(View.VISIBLE);
+//            }
         }
 
     }

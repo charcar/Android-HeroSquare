@@ -65,16 +65,30 @@ public class ComicvineService {
                 for (int i = 0; i < resultsJSON.length(); i++) {
                     JSONObject heroJSON = resultsJSON.getJSONObject(i);
                     String name = heroJSON.optString("name", "N/A");
+//                    if (name.equals(null)) {
+//                        name = "N/A";
+//                    }
                     String aliases = heroJSON.optString("aliases", "N/A");
+//                    if (aliases.equals(null)) {
+//                        aliases = "N/A";
+//                    }
                     String realName = heroJSON.optString("real_name", "N/A");
+//                    if (realName.equals(null)) {
+//                        realName = "N/A";
+//                    }
                     String description = heroJSON.optString("deck", "N/A");
-
+//                    if (description.equals(null)) {
+//                        description = "N/A";
+//                    }
                     String rawBio = heroJSON.optString("description", "N/A");
                     String bio = html2text(rawBio);
 
                     String iconImageUrl = heroJSON.getJSONObject("image").optString("icon_url", "N/A");
                     String screenImageUrl = heroJSON.getJSONObject("image").optString("screen_url", "N/A");
                     String origin = heroJSON.getJSONObject("origin").optString("name", "N/A");
+//                    if (origin.equals(null)) {
+//                        origin = "N/A";
+//                    }
                     int popularity = heroJSON.getInt("count_of_issue_appearances");
 
                     Hero hero = new Hero(name, aliases, realName, description, bio, iconImageUrl,
