@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.epicodus.herosquare.R;
 import com.epicodus.herosquare.adapters.HeroPagerAdapter;
 import com.epicodus.herosquare.models.Hero;
+import com.epicodus.herosquare.util.ScaleAndFadePageTransformer;
 
 import org.parceler.Parcels;
 
@@ -32,5 +33,6 @@ public class HeroDetailActivity extends AppCompatActivity {
         adapterViewPager = new HeroPagerAdapter(getSupportFragmentManager(), mHeroes);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
+        mViewPager.setPageTransformer(true, new ScaleAndFadePageTransformer());
     }
 }
