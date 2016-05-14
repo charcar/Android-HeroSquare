@@ -37,45 +37,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
-    public void hideKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-    }
-
-    public void setupUI(View view) {
-        if(!(view instanceof EditText)) {
-            view.setOnTouchListener(new View.OnTouchListener() {
-                public boolean onTouch(View v, MotionEvent event) {
-                    hideKeyboard(MainActivity.this);
-                    return false;
-                }
-            });
-        }
-
-        if(view instanceof ViewGroup) {
-            for(int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
-                View innerView = ((ViewGroup) view).getChildAt(i);
-                setupUI(innerView);
-            }
-        }
-    }
+//    TODO Implement app-wide hideSoftKeyboard method
+//    public void hideKeyboard(Activity activity) {
+//        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+//        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+//    }
+//
+//    public void setupUI(View view) {
+//        if(!(view instanceof EditText)) {
+//            view.setOnTouchListener(new View.OnTouchListener() {
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    hideKeyboard(MainActivity.this);
+//                    return false;
+//                }
+//            });
+//        }
+//
+//        if(view instanceof ViewGroup) {
+//            for(int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+//                View innerView = ((ViewGroup) view).getChildAt(i);
+//                setupUI(innerView);
+//            }
+//        }
+//    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupUI(findViewById(R.id.parentContainer));
+//        setupUI(findViewById(R.id.parentContainer));
         ButterKnife.bind(this);
         mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
 
-
         mSearchHeroesButton.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
-
+        mSeeTeamButton.setOnClickListener(this);
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("message");
@@ -95,7 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (v == mSearchHeroesButton) {
             String name = mHeroSearchEditText.getText().toString();
-
             Intent intent = new Intent(MainActivity.this, HeroListActivity.class);
             intent.putExtra("name", name);
             startActivity(intent);
@@ -103,7 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mLogInButton) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-
+        }
+        if (v == mSeeTeamButton) {
+            Intent intent = new Intent(MainActivity.this, SavedHeroListActivity.class);
+            startActivity(intent);
+            Log.d("Lets see our heroes", "please");
         }
     }
 
@@ -141,13 +144,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if ("notLogged".equals(uid)) {
             mLogInButton.setVisibility(View.VISIBLE);
         }
-        if (uid != "notLogged") {
-//            Firebase main = new Firebase(Constants.FIREBASE_URL);
-//            if (main.getAuth().equals(null)) {
-                mSeeTeamButton.setVisibility(View.VISIBLE);
-                mClaimButton.setVisibility(View.VISIBLE);
-//            }
-        }
+//        if (uid != "notLogged") {
+////            Firebase main = new Firebase(Constants.FIREBASE_URL);
+////            if (main.getAuth().equals(null)) {
+//                mSeeTeamButton.setVisibility(View.VISIBLE);
+//                mClaimButton.setVisibility(View.VISIBLE);
+////            }
+//        }
 
     }
 

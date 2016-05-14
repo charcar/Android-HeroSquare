@@ -35,12 +35,12 @@ public class Hero {
 
     public String getAliases() { return aliases; }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getRealName() {
         return realName;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getBio() {

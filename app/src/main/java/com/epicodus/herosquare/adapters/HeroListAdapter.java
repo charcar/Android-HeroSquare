@@ -21,9 +21,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroViewHolder> {
-    private static final int MAX_WIDTH = 150;
-    private static final int MAX_HEIGHT = 150;
+public class HeroListAdapter extends RecyclerView.Adapter<HeroViewHolder> {
 
     private ArrayList<Hero> mHeroes = new ArrayList<>();
     private Context mContext;
@@ -34,14 +32,14 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroVi
     }
 
     @Override
-    public HeroListAdapter.HeroViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public HeroViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hero_list_item, parent, false);
-        HeroViewHolder viewHolder = new HeroViewHolder(view);
+        HeroViewHolder viewHolder = new HeroViewHolder(view, mHeroes);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(HeroListAdapter.HeroViewHolder holder, int position) {
+    public void onBindViewHolder(HeroViewHolder holder, int position) {
         holder.bindHero(mHeroes.get(position));
     }
 
@@ -50,40 +48,5 @@ public class HeroListAdapter extends RecyclerView.Adapter<HeroListAdapter.HeroVi
         return mHeroes.size();
     }
 
-    public class HeroViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.heroThumbImageView) ImageView mHeroThumbImageView;
-        @Bind(R.id.heroNameTextView) TextView mHeroNameTextView;
-        @Bind(R.id.realNameTextView) TextView mRealNameTextView;
-        @Bind(R.id.originTextView) TextView mOriginTextView;
-        private Context mContext;
 
-        public HeroViewHolder(View itemView) {
-            super(itemView);
-            mContext = itemView.getContext();
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    int itemPosition = getLayoutPosition();
-                    Intent intent = new Intent(mContext, HeroDetailActivity.class);
-                    intent.putExtra("position", itemPosition + "");
-                    intent.putExtra("heroes", Parcels.wrap(mHeroes));
-                    mContext.startActivity(intent);
-                }
-            });
-        }
-
-        public void bindHero(Hero hero) {
-            Picasso.with(mContext)
-                    .load(hero.getIconImageUrl())
-                    .resize(MAX_WIDTH, MAX_HEIGHT)
-                    .centerCrop()
-                    .into(mHeroThumbImageView);
-
-            mHeroNameTextView.setText(hero.getName());
-            mRealNameTextView.setText(hero.getRealName());
-            mOriginTextView.setText(hero.getOrigin());
-        }
-    }
 }

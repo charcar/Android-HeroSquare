@@ -81,6 +81,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
         mOriginLabel.setText(mHero.getOrigin());
         mAliasLabel.setText(mHero.getAliases());
 
+
         mFullDescriptionLabel.setText(mHero.getDescription());
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
