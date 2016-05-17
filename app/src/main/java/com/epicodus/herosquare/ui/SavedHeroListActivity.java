@@ -1,5 +1,7 @@
 package com.epicodus.herosquare.ui;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,14 +31,16 @@ public class SavedHeroListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_heroes);
         ButterKnife.bind(this);
 
-        mFirebaseHerosRef = new Firebase(Constants.FIREBASE_URL);
+        mFirebaseHerosRef = new Firebase(Constants.FIREBASE_URL_HEROES);
 
         setUpFirebaseQuery();
         setUpRecyclerView();
     }
 
     private void setUpFirebaseQuery() {
-        String location = mFirebaseHerosRef.toString();
+        SharedPreferences sf = PreferenceManager.getDefaultSharedPreferences(this);
+        String keyUID = sf.getString(Constants.KEY_UID, null);
+        String location = mFirebaseHerosRef.child(keyUID).toString();
         mQuery = new Firebase(location);
     }
 
