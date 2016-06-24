@@ -29,7 +29,7 @@ Integrate Google Places API, allowing users to check-in with their heroes, claim
 
 ## Technologies Used
 
-Java, Android Studio, ButterKnife, Firebase, ComicsVine API
+Java, Android Studio, ButterKnife, Firebase, ComicsVine API, jsoup
 
 ### Legal
 
