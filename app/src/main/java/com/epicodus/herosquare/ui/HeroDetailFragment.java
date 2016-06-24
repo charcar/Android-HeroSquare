@@ -18,7 +18,11 @@ import android.widget.Toast;
 import com.epicodus.herosquare.Constants;
 import com.epicodus.herosquare.R;
 import com.epicodus.herosquare.models.Hero;
+import com.epicodus.herosquare.models.User;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.jsoup.Jsoup;
@@ -43,6 +47,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.fullDescriptionTextView) TextView mFullDescriptionLabel;
     @Bind(R.id.saveHeroButton) Button mSaveHeroButton;
     @Bind(R.id.logInCreateAccountButton) Button mLogInCreateAccountButton;
+    @Bind(R.id.tooManyHeroesButton) Button mTooManyHeroesButton;
 
     private Hero mHero;
 
@@ -59,6 +64,7 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
         super.onCreate(savedInstanceState);
         mHero = Parcels.unwrap(getArguments().getParcelable("hero"));
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
     }
 
     @Override
@@ -86,7 +92,28 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         String uid = prefs.getString(Constants.KEY_UID, null);
-        Log.d("Shared Preferences", uid + "");
+
+        String userCountUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+        Firebase userHeroNumFirebaseRef = new Firebase(Constants.FIREBASE_URL_HEROES).child(userCountUid);
+
+        userHeroNumFirebaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                long longNum = dataSnapshot.getChildrenCount();
+                if (longNum >= 4) {
+                    mTooManyHeroesButton.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
 
         if ("notLogged".equals(uid)) {
             mLogInCreateAccountButton.setVisibility(View.VISIBLE);
@@ -115,14 +142,21 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
         if (v == mSaveHeroButton) {
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
             Firebase userHeroesFirebaseRef = new Firebase(Constants.FIREBASE_URL_HEROES).child(userUid);
+
+
             Firebase pushRef = userHeroesFirebaseRef.push();
             String heroesPushId = pushRef.getKey();
             mHero.setPushId(heroesPushId);
             pushRef.setValue(mHero);
+
             Toast.makeText(getContext(), "Well Chosen", Toast.LENGTH_SHORT).show();
         }
         if (v == mLogInCreateAccountButton) {
             Intent intent = new Intent(this.getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+        if (v == mTooManyHeroesButton) {
+            Intent intent = new Intent(this.getActivity(), SavedHeroListActivity.class);
             startActivity(intent);
         }
     }

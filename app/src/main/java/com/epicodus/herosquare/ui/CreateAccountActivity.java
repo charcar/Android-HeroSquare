@@ -148,8 +148,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onError(FirebaseError firebaseError) {
-                Log.d("Uh oh", "WHAT HAPPENED: " + firebaseError);
-
             }
         });
     }

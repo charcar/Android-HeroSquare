@@ -96,7 +96,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mSeeTeamButton) {
             Intent intent = new Intent(MainActivity.this, SavedHeroListActivity.class);
             startActivity(intent);
-            Log.d("Lets see our heroes", "please");
         }
     }
 
@@ -134,13 +133,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if ("notLogged".equals(uid)) {
             mLogInButton.setVisibility(View.VISIBLE);
         }
-//        if (uid != "notLogged") {
-////            Firebase main = new Firebase(Constants.FIREBASE_URL);
-////            if (main.getAuth().equals(null)) {
-//                mSeeTeamButton.setVisibility(View.VISIBLE);
-//                mClaimButton.setVisibility(View.VISIBLE);
-////            }
-//        }
 
     }
 

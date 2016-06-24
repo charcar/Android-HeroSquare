@@ -192,6 +192,17 @@
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 android:visibility="gone"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your team is full!"
+                android:id="@+id/tooManyHeroesButton"
+                android:layout_alignParentBottom="true"
+                android:background="@color/colorPrimaryDarkest"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:visibility="gone"/>
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

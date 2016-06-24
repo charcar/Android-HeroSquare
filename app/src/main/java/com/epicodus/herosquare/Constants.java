@@ -20,5 +20,5 @@ public class Constants {
     public static final String KEY_UID = "UID";
     public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_LOCATION_USERS;
 
-
+    public static final String PREFERENCES_HERO_NUMBER_KEY = "numHeroes";
 }
