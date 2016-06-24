@@ -110,11 +110,13 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
 
                 }
             });
-        } else if (userCountUid == "" || userCountUid == null) {
+        } if (userCountUid == "" || userCountUid == null || userCountUid == "notLogged") {
             mLogInCreateAccountButton.setVisibility(View.VISIBLE);
-        } else {
+        } if (userCountUid != null && userCountUid != "notLogged" && userCountUid != "") {
             mSaveHeroButton.setVisibility(View.VISIBLE);
+
         }
+
 
         return view;
     }
