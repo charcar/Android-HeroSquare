@@ -1,4 +1,4 @@
-# HeroSquare
+# HeroSquad
 ##### Hero Finding/Choosing App | May 18, 2016
 
 #### By Charles Carter
