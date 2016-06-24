@@ -103,8 +103,6 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
                 if (longNum >= 4) {
                     mTooManyHeroesButton.setVisibility(View.VISIBLE);
                 }
-
-
             }
 
             @Override
@@ -113,29 +111,15 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
             }
         });
 
-
-
         if ("notLogged".equals(uid)) {
             mLogInCreateAccountButton.setVisibility(View.VISIBLE);
         }
         if (uid != "notLogged") {
             mSaveHeroButton.setVisibility(View.VISIBLE);
         }
-
-
-
         return view;
     }
 
-    public static String html2text(String html) {
-        return Jsoup.parse(html).text();
-    }
-
-//    Note: After user has chosen hero, dialogfragment appears asking them if they'd like to 'share'
-//    their choice via implicit intent either through text or social media. I would like to figure
-//    out how to pass the hero name to the dialogFragment from this fragment, and then either pass
-//    that along with some text into an implicit intent, or give user the option to continue along
-//    with the rest of the app
 
     @Override
     public void onClick(View v) {
