@@ -4,92 +4,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.epicodus.herosquare.ui.LoginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    android:focusable="true">
 
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/textView4"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:textColor="@color/colorAccent"
-        android:gravity="center"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:paddingTop="55dp"
-        android:paddingBottom="55dp"
-        android:background="@color/offwhite"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:paddingLeft="10dp"
-        android:paddingTop="30dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/textView4">
-
-        <EditText
-            android:id="@+id/emailEditText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            android:textColorHint="@color/offwhite"
-            android:layout_marginTop="30dp"
-            android:textSize="20sp"/>
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:hint="Password"
-            android:textColorHint="@color/offwhite"
-            android:textSize="20sp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusableInTouchMode="true">
 
-        <Button
-            android:id="@+id/passwordLoginButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Log in"
-            android:background="@color/colorAccent"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/offwhite" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Login"
+                    android:id="@+id/textView4"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="55dp"
+                    android:paddingBottom="55dp"
+                    android:background="@color/offwhite"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/offwhite"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:text="Don't have an account? Sign up here!"
-            android:id="@+id/registerTextView"
-            android:layout_gravity="center_horizontal" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="30dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/textView4"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true">
 
-    </LinearLayout>
+                    <EditText
+                        android:id="@+id/emailEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email"
+                        android:textColorHint="@color/offwhite"
+                        android:layout_marginTop="30dp"
+                        android:textSize="20sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="invite your friends!"
-        android:id="@+id/inviteFriendsTextView"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="70dp"
-        android:textColor="#4a026f"
-        android:textStyle="bold"
-        android:textSize="25sp" />
+                    <EditText
+                        android:id="@+id/passwordEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:hint="Password"
+                        android:textColorHint="@color/offwhite"
+                        android:textSize="20sp"/>
 
+                    <Button
+                        android:id="@+id/passwordLoginButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="Log in"
+                        android:background="@color/colorAccent"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/offwhite" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/offwhite"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:text="Don't have an account? Sign up here!"
+                        android:id="@+id/registerTextView"
+                        android:layout_gravity="center_horizontal" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="invite your friends!"
+                    android:id="@+id/inviteFriendsTextView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="70dp"
+                    android:textColor="#4a026f"
+                    android:textStyle="bold"
+                    android:textSize="25sp" />
+
+                </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
