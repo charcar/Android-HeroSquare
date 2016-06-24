@@ -1,37 +1,5 @@
 <resources>
-    <string name="app_name">MarvelSquare</string>,
-    <string-array name="good_heroes">
-        <item>Professor X</item>
-        <item>Wolverine</item>
-        <item>Storm</item>
-        <item>Rogue</item>
-        <item>Colossus</item>
-        <item>Psylocke</item>
-    </string-array>
-    ,
-    <string-array name="evil_heroes">
-        <item>Magneto</item>
-        <item>Mystique</item>
-        <item>Scarlet Witch</item>
-        <item>Sabertooth</item>
-        <item>Blob</item>
-        <item>Toad</item>
-    </string-array>
-
-    <string-array name="all_heroes">
-        <item>Professor X</item>
-        <item>Wolverine</item>
-        <item>Storm</item>
-        <item>Rogue</item>
-        <item>Colossus</item>
-        <item>Psylocke</item>
-        <item>Magneto</item>
-        <item>Mystique</item>
-        <item>Scarlet Witch</item>
-        <item>Sabertooth</item>
-        <item>Blob</item>
-        <item>Toad</item>
-    </string-array>
+    <string name="app_name">HeroSquare</string>,
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
