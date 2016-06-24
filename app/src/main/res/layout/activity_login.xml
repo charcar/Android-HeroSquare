@@ -97,20 +97,7 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="invite your friends!"
-                    android:id="@+id/inviteFriendsTextView"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="70dp"
-                    android:textColor="#4a026f"
-                    android:textStyle="bold"
-                    android:textSize="25sp" />
-
-                </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

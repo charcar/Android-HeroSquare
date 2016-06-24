@@ -25,7 +25,6 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.registerTextView) TextView mRegisterTextView;
-    @Bind(R.id.inviteFriendsTextView) TextView mInviteFriends;
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
@@ -86,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
         }
 
-//        mAuthProgressDialog.show();
     }
 
     public void loginWithPassword() {

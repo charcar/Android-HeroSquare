@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.epicodus.herosquare.Constants;
 import com.epicodus.herosquare.R;
 import com.epicodus.herosquare.models.Hero;
-import com.epicodus.herosquare.models.User;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -94,29 +93,29 @@ public class HeroDetailFragment extends Fragment implements View.OnClickListener
         String uid = prefs.getString(Constants.KEY_UID, null);
 
         String userCountUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-        Firebase userHeroNumFirebaseRef = new Firebase(Constants.FIREBASE_URL_HEROES).child(userCountUid);
+        if (userCountUid != "" && userCountUid != null) {
+            Firebase userHeroNumFirebaseRef = new Firebase(Constants.FIREBASE_URL_HEROES).child(userCountUid);
 
-        userHeroNumFirebaseRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                long longNum = dataSnapshot.getChildrenCount();
-                if (longNum >= 4) {
-                    mTooManyHeroesButton.setVisibility(View.VISIBLE);
+            userHeroNumFirebaseRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    long longNum = dataSnapshot.getChildrenCount();
+                    if (longNum >= 4) {
+                        mTooManyHeroesButton.setVisibility(View.VISIBLE);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
 
-            }
-        });
-
-        if ("notLogged".equals(uid)) {
+                }
+            });
+        } else if (userCountUid == "" || userCountUid == null) {
             mLogInCreateAccountButton.setVisibility(View.VISIBLE);
-        }
-        if (uid != "notLogged") {
+        } else {
             mSaveHeroButton.setVisibility(View.VISIBLE);
         }
+
         return view;
     }
 

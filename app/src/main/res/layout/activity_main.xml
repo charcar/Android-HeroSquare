@@ -27,17 +27,16 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:visibility="invisible"/>
+        android:visibility="gone"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="search"
         android:id="@+id/searchHeroesButton"
-        android:layout_marginBottom="67dp"
-        android:layout_above="@+id/logInButton"
-        android:layout_alignLeft="@+id/logInButton"
-        android:layout_alignStart="@+id/logInButton" />
+        android:layout_marginBottom="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,22 +82,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Claim Spot"
-        android:id="@+id/mapClaimButton"
-        android:layout_alignBottom="@+id/logInButton"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="visible"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="My Team"
         android:id="@+id/seeTeamButton"
-        android:layout_alignBottom="@+id/logInButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:visibility="visible"/>
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

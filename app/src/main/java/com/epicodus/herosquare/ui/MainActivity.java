@@ -11,9 +11,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.heroSearchEditText) EditText mHeroSearchEditText;
     @Bind(R.id.searchHeroesButton) Button mSearchHeroesButton;
     @Bind(R.id.logInButton) Button mLogInButton;
-    @Bind(R.id.mapClaimButton) Button mClaimButton;
     @Bind(R.id.seeTeamButton) Button mSeeTeamButton;
 
     private Firebase mFirebaseRef;
@@ -62,8 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toast.show();
         }
 
-        buttonShowStatus();
-
         mHeroSearchEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -73,6 +68,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+        String logStatus =  (mSharedPreferences.getString(Constants.KEY_UID, null));
+        if (logStatus == "") {
+            mLogInButton.setVisibility(View.VISIBLE);
+        } else if (logStatus == null) {
+            mLogInButton.setVisibility(View.VISIBLE);
+
+        } else {
+            mSeeTeamButton.setVisibility(View.VISIBLE);
+        }
+        buttonShowStatus();
     }
 
     public void hideKeyboard(View view) {
@@ -132,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if ("notLogged".equals(uid)) {
             mLogInButton.setVisibility(View.VISIBLE);
+            mSeeTeamButton.setVisibility(View.INVISIBLE);
         }
 
     }
