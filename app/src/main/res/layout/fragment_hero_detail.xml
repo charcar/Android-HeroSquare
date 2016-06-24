@@ -23,9 +23,9 @@
                 android:contentDescription="A banner image of the superhero you chose"
                 android:scaleType="centerCrop" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="55dp"
                 android:layout_gravity="bottom"
                 android:background="@color/translucent"
                 android:orientation="vertical">
@@ -38,9 +38,38 @@
                     android:id="@+id/heroNameTextView"
                     android:textAlignment="center"
                     android:textColor="@color/complement"
-                    android:textSize="40sp"/>
+                    android:textSize="28sp"
+                    android:layout_marginBottom="14dp"/>
 
-            </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Appearances: "
+                    android:id="@+id/appearancesTextView"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="end|bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toLeftOf="@+id/popularityTextView"
+                    android:layout_toStartOf="@+id/popularityTextView"
+                    android:paddingEnd="2dp"
+                    android:paddingRight="2dp"
+                    android:paddingBottom="2dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="popularity"
+                    android:id="@+id/popularityTextView"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="end|bottom"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="2dp"/>
+            </RelativeLayout>
+
         </FrameLayout>
 
         <ScrollView
@@ -70,16 +99,6 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="popularity"
-                android:id="@+id/popularityTextView"
-                android:layout_alignTop="@+id/aliasTextView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/decadic" />
 
             <TextView
                 android:layout_width="wrap_content"

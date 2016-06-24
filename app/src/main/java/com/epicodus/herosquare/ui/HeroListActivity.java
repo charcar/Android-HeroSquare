@@ -78,7 +78,6 @@ public class HeroListActivity extends AppCompatActivity {
 
                         }
                     });
-//              } HOW TO HANDLE POOR USER QUERIES?
             }
         });
     }
